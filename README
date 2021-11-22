@@ -1,3 +1,6 @@
+WINDOWS
+This branch contains tweaks to install on windows.  You will need to have installed UnxUtils
+and windows HMMR executables.
 
 ANARCI                                                 \\    //
 Antibody Numbering and Antigen Receptor ClassIfication  \\  //

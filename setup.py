@@ -5,7 +5,7 @@
 # Maintained by members of OPIG #
 #                               #
 
-import shutil, os, subprocess, imp
+import shutil, os, subprocess, imp, sys
 # Clean this out if it exists
 if os.path.isdir("build"):
     shutil.rmtree("build/")
@@ -26,7 +26,7 @@ setup(name='anarci',
       #                         'dat/HMMs/ALL.hmm.h3m',
       #                         'dat/HMMs/ALL.hmm.h3p']},
       scripts=['bin/ANARCI'],
-      data_files = [ ('bin', ['bin/muscle', 'bin/muscle_macOS']) ]
+      data_files = [ ('bin', ['bin/muscle', 'bin/muscle_macOS', 'bin/muscle.exe']) ]
      )
 
 ####
@@ -52,7 +52,12 @@ except OSError:
     pass
 
 print('Downloading germlines from IMGT and building HMMs...')
-proc = subprocess.Popen(["bash", "RUN_pipeline.sh"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+
+if sys.platform == 'win32':
+    shell = 'sh.exe'
+else:
+    shell = 'bash'
+proc = subprocess.Popen([shell, "RUN_pipeline.sh"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)
 o, e = proc.communicate()
 
 print(o.decode())
