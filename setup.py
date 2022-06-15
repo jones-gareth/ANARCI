@@ -54,7 +54,7 @@ except OSError:
 print('Downloading germlines from IMGT and building HMMs...')
 
 if sys.platform == 'win32':
-    shell = 'sh.exe'
+    shell = 'C:\\Program Files\\Git\\bin\\sh.exe'
 else:
     shell = 'bash'
 proc = subprocess.Popen([shell, "RUN_pipeline.sh"], stdout = subprocess.PIPE, stderr = subprocess.PIPE)

@@ -627,7 +627,8 @@ def number_sequences_from_alignment(sequences, alignments, scheme="imgt", allow=
                     hit_details.append( details )
                 except AssertionError as e: # Handle errors. Those I have implemented should be assertion.
                     print(str(e), file=sys.stderr)
-                    raise e # Validation went wrong. Error message will go to stderr. Want this to be fatal during development.
+                    # GJ Don't want a single bad sequence to crash a batch
+                    # raise e # Validation went wrong. Error message will go to stderr. Want this to be fatal during development.
                 except Exception as e:
                     print("Error: Something really went wrong that has not been handled", file=sys.stderr)
                     print(str(e), file=sys.stderr)
